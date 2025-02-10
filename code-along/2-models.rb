@@ -51,10 +51,27 @@ puts "There are #{Company.all.count} companies"
 cali_companies = Company.where({"state" => "CA"})
 puts cali_companies.inspect
 
+puts "California companies: #{cali_companies.count}"
+
 # 4. query companies table to find single row for Apple
 
+#apple = Company.where({"name" => "Apple"})[0]
+apple = Company.find_by({"name" => "Apple"})
+puts apple.inspect
+
 # 5. read a row's column value
+puts apple["url"]
+
+
 
 # 6. update a row's column value
+amazon = Company.find_by({"name" => "Amazon"})
+puts amazon.inspect
+
+amazon["url"] = "https://amazon.com"
+amazon.save
+puts amazon.inspect
 
 # 7. delete a row
+google = Company.find_by({"name" => "Google"})
+google.destroy
